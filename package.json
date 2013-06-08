@@ -1,0 +1,23 @@
+{
+  "name": "url-tools",
+  "version": "0.0.1",
+  "description": "Tool to normalize and compare URL structures",
+  "main": "index.js",
+  "keywords": [
+    "url",
+    "utilities",
+    "mapping",
+    "normalize",
+    "compare"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "mocha": "~1.10.0",
+    "chai": "~1.6.0"
+  },
+  "repository": "",
+  "author": "Glenn Jones",
+  "license": "MIT"
+}

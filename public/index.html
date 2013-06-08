@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>url-tools</title>
+
+
+
+    <style>
+      /* 1. RESET AND HTML5 SETTINGS 
+      ------------------------------*/ 
+
+      body,
+      ul,
+      ol,
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      fieldset,
+      dd {
+        margin:  0;
+        padding: 0;
+      }
+
+      article,
+      aside,
+      dialog,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      nav,
+      section,
+      small {
+          display: block;
+      }
+
+
+      /* 2. BASE SETTINGS 
+      --------------------------------------------*/
+
+      html {
+        background-color: #FFF;
+        color: #444;
+      }
+
+      body {
+        font-size: 100%;
+        line-height: 1.4em;
+        font-family: calibri, arial, helvetica, 'lucida grande', 'lucida sans unicode', verdana, sans-serif;
+        border-top: 0.25em solid #444;
+        padding: 3em;
+      }
+
+      h1{
+        margin: 1em 0 1em 0;
+        font-weight: normal;
+      }
+
+      h2{
+        margin-top: 2em;
+        margin-bottom: 0;
+      }
+
+      input[type="text"]{
+        width: 30em;
+      }
+
+      textarea {
+        width: 30em;
+        height: 12em;
+      }
+
+      input[type="submit"]{
+        margin-top: 1em;
+        margin-left: 9em;
+      }
+
+      label{
+        display: inline-block;
+        width: 6em;
+      }
+
+      .long-label{
+        width: 9em;
+      }
+
+      .notes {
+        margin: 1em 0 1em 0;
+      }
+
+      footer{
+        margin: 4em 0 4em 0;
+        color: #999;
+      }
+
+      a{
+        color: #999;
+      }
+
+
+
+    </style>
+
+  </head>
+  <body>
+    <h1>url-tools</h1>
+
+
+    <h2>API example - Normalize URL</h2>
+    <p class='notes'>Add a URL you want to normalize.</p>
+
+
+    <form method="get" action="/normalize/">
+        <p><label for="url">url</label>
+            <input type="text" name="url"/>
+        </p>
+
+        <p><label for="callback">callback</label>
+            <input type="text" name="callback"/>
+        </p>
+
+        <p><label class="long-label" for="callback">lowercase</label>
+            <input type="checkbox" checked name="lowercase"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeWWW</label>
+            <input type="checkbox" checked name="removeWWW"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeTrailingSlash</label>
+            <input type="checkbox" checked name="removeTrailingSlash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">forceTrailingSlash</label>
+            <input type="checkbox"  name="forceTrailingSlash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeSearch</label>
+            <input type="checkbox" checked name="removeSearch"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeHash</label>
+            <input type="checkbox" checked name="removeHash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeHashbang</label>
+            <input type="checkbox" checked name="removeHashbang"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeProtocol</label>
+            <input type="checkbox" checked name="removeProtocol"/>
+        </p>
+
+      <input type="submit" value="Parse"/>
+     </form>
+
+
+
+
+    <h2>API example - isEqual</h2>
+    <p class='notes'>Add two URLs you wish to compare.</p>
+
+    <form method="get" action="/isequal/">
+        <p><label for="urla">url A</label>
+            <input type="text" name="urla"/>
+        </p>
+
+        <p><label for="urlb">url B</label>
+            <input type="text" name="urlb"/>
+        </p>
+
+        <p><label for="callback">callback</label>
+            <input type="text" name="callback"/>
+        </p>
+
+        <p><label class="long-label" for="callback">lowercase</label>
+            <input type="checkbox" checked name="lowercase"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeWWW</label>
+            <input type="checkbox" checked name="removeWWW"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeTrailingSlash</label>
+            <input type="checkbox" checked name="removeTrailingSlash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">forceTrailingSlash</label>
+            <input type="checkbox"  name="forceTrailingSlash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeSearch</label>
+            <input type="checkbox" checked name="removeSearch"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeHash</label>
+            <input type="checkbox" checked name="removeHash"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeHashbang</label>
+            <input type="checkbox" checked name="removeHashbang"/>
+        </p>
+
+        <p><label class="long-label" for="callback">removeProtocol</label>
+            <input type="checkbox" checked name="removeProtocol"/>
+        </p>
+
+        <input type="submit" value="Parse"/>
+     </form>
+
+
+
+
+     <footer class="vcard">
+      <p>This project is maintained by <a class="url fn" href="http://glennjones.net">glennjones</a></p>
+      <p>You view and download the source from GitHub <a href="https://github.com/glennjones/url-tools">glennjones/url-tools</a></p>
+      <p class="copyright">It is open sourced under MIT licenses. See the license.txt file within the project source.</p>
+    </footer>
+    
+  </body>
+</html>

@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+
+var app         = require('http').createServer(handler),
+    fs          = require('fs'),
+    urlParser   = require('url'),
+    urlTools  = require('../lib/url-tools.js');
+
+
+function handler(req, res) {
+
+  // if the root is requested then display instructions.
+  if (req.url === '/') {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    fs.readFile(__dirname + '/../public/index.html', function (err, page) {
+      if (err) throw err;
+      res.end(page);
+    });
+    return;
+  }
+
+
+  if ( startsWith(req.url,'/normalize/') ) {
+    res.writeHead(200, {'Content-Type': 'application/json; charset=utf-8'});
+    var query = urlParser.parse(req.url, true).query;
+    var options = buildOptions( query );
+
+    if(query.url){
+      var normalize = urlTools.normalize( query.url, options )
+      if (query.callback) {
+        res.end(query.callback + '({"normalize":' + JSON.stringify(normalize) + '})');
+      } else {
+        res.end('{"normalize": "' + JSON.stringify(normalize) + '"}');
+      }
+    }else{
+      res.end('{error:"no url passed"}');
+    }
+    return;
+  }
+
+
+  if ( startsWith(req.url,'/isequal/') ) {
+    res.writeHead(200, {'Content-Type': 'application/json; charset=utf-8'});
+    var query = urlParser.parse(req.url, true).query;
+    var options = buildOptions( query );
+
+    if(query.urla && query.urlb){
+      var isequal = urlTools.isEqual( query.urla, query.urlb, options )
+      if (query.callback) {
+        res.end(query.callback + '({isequal: "' + JSON.stringify(isequal) + 
+          '", urla: "' +  urlTools.normalize( query.urla, options ) + 
+          '", urlb: "' +  urlTools.normalize( query.urlb, options ) +'"})');
+      } else {
+        res.end('{"isequal": "' + JSON.stringify(isequal) + 
+          '" ,"urla": "' +  urlTools.normalize( query.urla, options ) + 
+          '" ,"urlb": "' +  urlTools.normalize( query.urlb, options ) +'"}');
+      }
+    }else{
+      res.end('{error:"no missing one or more urls"}');
+    }
+    return;
+  }
+}
+
+
+buildOptions = function(query){
+  var options = {};
+  options.lowercase = (query.lowercase) ? true : false;
+  options.removeWWW = (query.removeWWW) ? true : false;
+  options.removeTrailingSlash = (query.removeTrailingSlash) ? true : false;
+  options.forceTrailingSlash =(query.forceTrailingSlash) ? true : false;
+  options.removeSearch = (query.removeSearch) ? true : false;
+  options.removeHash = (query.removeHash) ? true : false;
+  options.removeHashbang = (query.removeHashbang) ? true : false;
+  options.removeProtocol = (query.removeProtocol) ? true : false;
+  return( options );
+}
+
+
+startsWith = function(str, test){
+    return str.indexOf(test) == 0;
+}
+
+
+
+
+app.listen(8888, 'localhost');
+console.log('App @ http://localhost:8888');
