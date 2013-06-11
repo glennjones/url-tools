@@ -2,7 +2,7 @@
   "name": "url-tools",
   "version": "0.0.1",
   "description": "Tool to normalize and compare URL structures",
-  "main": "index.js",
+  "main": "index",
   "keywords": [
     "url",
     "utilities",
@@ -10,14 +10,21 @@
     "normalize",
     "compare"
   ],
+  "bin": {
+    "url-tools": "./bin/url-tools"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test",
+    "start": "bin/url-tools"
   },
   "devDependencies": {
     "mocha": "~1.10.0",
     "chai": "~1.6.0"
   },
-  "repository": "",
+ "repository": {
+    "type": "git",
+    "url": "git://github.com/glennjones/url-tools.git"
+  },
   "author": "Glenn Jones",
   "license": "MIT"
 }

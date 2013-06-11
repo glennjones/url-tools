@@ -105,7 +105,8 @@ describe('normalize URL', function(){
 			removeHashbang: false,
 			removeProtocol: true
 		}
-	  	assert.equal('glennjones.net/about', urlTools.normalize('glennjones.net/about', options));
+	  	assert.equal('glennjones.net/about', urlTools.normalize('http://glennjones.net/about', options));
+	  	assert.equal('glennjones.net/about', urlTools.normalize('https://glennjones.net/about', options));
 	})
 })
 
